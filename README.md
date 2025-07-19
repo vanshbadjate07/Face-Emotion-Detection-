@@ -7,7 +7,7 @@ This is a real-time facial emotion detection system built using OpenCV and Tenso
 ## 🔍 Features
 
 - Real-time face emotion detection
-- Trained CNN model using custom dataset
+- Trained CNN model using a custom dataset
 - Uses OpenCV for face detection (Haar Cascades)
 - Fully offline – works with webcam feed
 - Easy to use and extend
@@ -51,10 +51,29 @@ pip install -r requirements.txt
 
 ---
 
-## 📦 Dataset Info
+## 📦 Dataset & Model Files
 
-- The dataset used is organized into `train/` and `test/` folders
-- If dataset is not included, download it from [Kaggle FER-2013] or similar source and extract into `archive/` folder.
+To keep the repository lightweight, large files such as the dataset, preprocessed `.npy` files, and trained model weights are **not included** in this GitHub repo.
+
+🔗 Download all missing files from here:  
+👉 [Download Dataset & Model Files (Google Drive)](https://drive.google.com/drive/folders/1HiCgbI4HCDeMgOCid2qF_jDs4om-4dD7?usp=sharing)
+
+This includes:
+- `X_train.npy`, `y_train.npy`, `X_test.npy`, `y_test.npy`
+- `final_emotion_model.h5`, `best_model.h5`
+- Preprocessed `archive/` dataset if needed
+
+Place them in the root folder of the project as follows:
+
+```
+Face-Emotion-Detection/
+├── X_train.npy
+├── y_train.npy
+├── X_test.npy
+├── y_test.npy
+├── best_model.h5
+├── final_emotion_model.h5
+```
 
 ---
 
@@ -69,28 +88,40 @@ python preprocess.py
 ### 2. Train the Model (Optional – already trained model provided)
 
 ```bash
-python train.py
+python train_model.py
 ```
 
 ### 3. Run Real-Time Emotion Detection
 
 ```bash
-python detect.py
+python predict.py
 ```
 
 ---
 
-## 🧠 Model
+## 🧠 Model Details
 
-- Model is saved as `model/best_model.h5`
-- CNN architecture with Conv2D, MaxPooling, Dense, Dropout
-- Input: 48x48 grayscale images
+- Saved as `best_model.h5`
+- CNN architecture with Conv2D, MaxPooling2D, Dense, and Dropout
+- Input: 48x48 grayscale face images
+- Optimized for categorical emotion classification
+
+---
+
+## 🧪 Requirements
+
+- Python 3.6+
+- OpenCV
+- TensorFlow / Keras
+- NumPy
+
+Use the included `requirements.txt` to install all dependencies.
 
 ---
 
 ## 📄 License
 
-MIT License
+This project is licensed under the MIT License.
 
 ---
 
